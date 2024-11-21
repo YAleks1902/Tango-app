@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Joke } from '../types';
 
-const API_URL = 'https://icanhazdadjoke.com'; // make it env variable
+const API_URL = 'https://icanhazdadjoke.com'; // TODO make it env variable
 const cache: Map<string, Joke[]> = new Map();
 
 export const useJokes = (query: string) => {
