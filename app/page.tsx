@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { useJokes } from './hooks/useJokes';
-import { debounce } from './utils/debounce';
+import { useDebounce } from './hooks/useDebounce';
 import SearchBar from './components/SearchBar';
 import Dropdown from './components/Dropdown';
 import { Joke } from './types';
@@ -12,7 +12,7 @@ export default function Home() {
 
   const { jokes, isLoading } = useJokes(query);
 
-  const debouncedSetQuery = debounce((value: string) => setQuery(value), 500);
+   const debouncedSetQuery = useDebounce((value: string) => setQuery(value), 500);
 
   const handleSearch = (value: string) => {
     setSelectedJoke(null);
@@ -21,6 +21,7 @@ export default function Home() {
 
   const handleSelect = (joke: Joke) => {
     setSelectedJoke(joke);
+    setQuery('')
   };
 
   return (
